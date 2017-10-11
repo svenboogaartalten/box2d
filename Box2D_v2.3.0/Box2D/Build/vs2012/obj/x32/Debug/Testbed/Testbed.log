@@ -1,0 +1,6 @@
+﻿  TestEntries.cpp
+  Test.cpp
+  Render.cpp
+  Main.cpp
+  Generating Code...
+LINK : fatal error LNK1104: cannot open file 'bin\Debug\Box2D.lib'

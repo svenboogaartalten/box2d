@@ -1,0 +1,5 @@
+﻿  TestEntries.cpp
+c:\users\sboogaart\documents\projects\tests\box2d\box2d_v2.3.0\box2d\testbed\tests\CustomCar.h(152): warning C4305: 'argument': truncation from 'double' to 'float32'
+c:\users\sboogaart\documents\projects\tests\box2d\box2d_v2.3.0\box2d\testbed\tests\CustomCar.h(195): warning C4244: 'argument': conversion from 'double' to 'float32', possible loss of data
+c:\users\sboogaart\documents\projects\tests\box2d\box2d_v2.3.0\box2d\testbed\tests\CustomCar.h(201): warning C4244: 'argument': conversion from 'double' to 'float32', possible loss of data
+  Testbed.vcxproj -> C:\Users\sboogaart\Documents\Projects\Tests\box2d\Box2D_v2.3.0\Box2D\Build\Testbed\Debug\Testbed.exe

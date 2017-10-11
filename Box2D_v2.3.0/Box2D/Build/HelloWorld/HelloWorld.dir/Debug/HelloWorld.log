@@ -1,0 +1,4 @@
+﻿  Building Custom Rule C:/Users/sboogaart/Documents/Projects/Tests/box2d/Box2D_v2.3.0/Box2D/HelloWorld/CMakeLists.txt
+  CMake does not need to re-run because C:/Users/sboogaart/Documents/Projects/Tests/box2d/Box2D_v2.3.0/Box2D/Build/HelloWorld/CMakeFiles/generate.stamp is up-to-date.
+  HelloWorld.cpp
+  HelloWorld.vcxproj -> C:\Users\sboogaart\Documents\Projects\Tests\box2d\Box2D_v2.3.0\Box2D\Build\HelloWorld\Debug\HelloWorld.exe
