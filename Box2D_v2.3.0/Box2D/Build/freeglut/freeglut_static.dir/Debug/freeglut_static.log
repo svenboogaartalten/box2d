@@ -1,6 +1,4 @@
-﻿  Building Custom Rule C:/Users/sboogaart/Documents/Projects/Tests/box2d/Box2D_v2.3.0/Box2D/freeglut/CMakeLists.txt
-  CMake does not need to re-run because C:/Users/sboogaart/Documents/Projects/Tests/box2d/Box2D_v2.3.0/Box2D/Build/freeglut/CMakeFiles/generate.stamp is up-to-date.
-  freeglut_callbacks.c
+﻿  freeglut_callbacks.c
   freeglut_cursor.c
   freeglut_display.c
   freeglut_ext.c

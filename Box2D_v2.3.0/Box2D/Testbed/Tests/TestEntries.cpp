@@ -26,7 +26,6 @@
 #endif
 
 #include "CustomCar.h"
-#include "CustomTest.h"
 
 #include "AddPair.h"
 #include "ApplyForce.h"
@@ -80,7 +79,6 @@
 
 TestEntry g_testEntries[] =
 {
-	{ "Custom-test", CustomTest::Create },
 	{ "Custom-car", CustomCar::Create },
 	{"Ray-Cast", RayCast::Create},
 	{"Dump Shell", DumpShell::Create},

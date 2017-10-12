@@ -156,6 +156,9 @@
     <ClInclude Include="..\..\Testbed\Tests\CustomCar.h">
       <Filter>Tests</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Testbed\Tests\Player.h">
+      <Filter>Tests\customclasses</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\sboogaart\Documents\Projects\Tests\box2d\Box2D_v2.3.0\Box2D\Testbed\CMakeLists.txt" />
@@ -166,6 +169,9 @@
     </Filter>
     <Filter Include="Tests">
       <UniqueIdentifier>{12BDD8C6-9500-37A1-9CE1-5EC96BD15A8C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests\customclasses">
+      <UniqueIdentifier>{519ca48d-fbe4-40a3-8af5-e89e5d4311a9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

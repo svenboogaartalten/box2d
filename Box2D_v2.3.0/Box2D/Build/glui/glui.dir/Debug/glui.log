@@ -1,6 +1,4 @@
-﻿  Building Custom Rule C:/Users/sboogaart/Documents/Projects/Tests/box2d/Box2D_v2.3.0/Box2D/glui/CMakeLists.txt
-  CMake does not need to re-run because C:/Users/sboogaart/Documents/Projects/Tests/box2d/Box2D_v2.3.0/Box2D/Build/glui/CMakeFiles/generate.stamp is up-to-date.
-  algebra3.cpp
+﻿  algebra3.cpp
   arcball.cpp
   glui_add_controls.cpp
   glui_bitmap_img_data.cpp

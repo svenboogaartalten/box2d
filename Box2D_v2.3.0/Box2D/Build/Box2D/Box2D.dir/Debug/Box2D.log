@@ -1,6 +1,4 @@
-﻿  Building Custom Rule C:/Users/sboogaart/Documents/Projects/Tests/box2d/Box2D_v2.3.0/Box2D/Box2D/CMakeLists.txt
-  CMake does not need to re-run because C:/Users/sboogaart/Documents/Projects/Tests/box2d/Box2D_v2.3.0/Box2D/Build/Box2D/CMakeFiles/generate.stamp is up-to-date.
-  b2DistanceJoint.cpp
+﻿  b2DistanceJoint.cpp
   b2FrictionJoint.cpp
   b2GearJoint.cpp
   b2Joint.cpp

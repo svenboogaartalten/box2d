@@ -1,22 +1,32 @@
 #pragma once
 #define DEGTORAD 0.0174532925199432957f
 #define RADTODEG 57.295779513082320876f
+
+#include <string>
+#include "Player.h"
+
 #ifndef CUSTOMCAR
 #define CUSTOMCAR
-#include <string>
+
 class CustomCar : public Test
 {
 public:
+	std::unique_ptr<Player> m_player;
 	b2Body* player;
 	float lastStep;
 	const char * finished;
 	CustomCar()
 	{
+		m_player = std::make_unique<Player>(m_world);
 
+		m_player->setPosition(b2Vec2(20, 20));
+		m_player->getBody()->SetTransform(b2Vec2(10, 20), 1);
+		m_player->getBody()->SetLinearVelocity(b2Vec2(-5, 5)); //moving up and left 5 units per second
+		m_player->getBody()->SetAngularVelocity(360 * DEGTORAD); //90 degrees per second clockwise
 
 		b2BodyDef myBodyDef;
 		lastStep = 0;
-		finished = "Go the the spot on the right to finish the game";
+		finished = "Go get the orange box on your right side to finish the game";
 
 		//SHAPES
 		b2PolygonShape boxShape;
@@ -54,15 +64,10 @@ public:
 
 
 		//CREATE BODIES
-		myBodyDef.type = b2_dynamicBody; //this will be a dynamic body
-		myBodyDef.position.Set(0, 20); //set the starting position
-		myBodyDef.angle = 0; //set the starting angle
-		player = m_world->CreateBody(&myBodyDef);
-		player->SetTransform(b2Vec2(10, 20), 1);
-		player->SetLinearVelocity(b2Vec2(-5, 5)); //moving up and left 5 units per second
-		player->SetAngularVelocity(360 * DEGTORAD); //90 degrees per second clockwise
-		
-		player->CreateFixture(&boxFixtureDef);
+		myBodyDef.type = b2_dynamicBody; //this will be  static bodies
+		myBodyDef.position.Set(22, -2);
+		b2Body* endgoal = m_world->CreateBody(&myBodyDef); //add body to world
+		endgoal->CreateFixture(&boxFixtureDef); //add fixture to body
 		
 
 		//Boxes
@@ -84,9 +89,7 @@ public:
 		b2Body* leftOfGoal = m_world->CreateBody(&myBodyDef); //add body to world
 		leftOfGoal->CreateFixture(&platformFixtureDef2); //add fixture to body
 
-		myBodyDef.position.Set(22, -3); 
-		b2Body* endgoal = m_world->CreateBody(&myBodyDef); //add body to world
-		endgoal->CreateFixture(&boxFixtureDef); //add fixture to body
+		
 
 		myBodyDef.position.Set(25, 0);
 		b2Body* rightOfGoal = m_world->CreateBody(&myBodyDef); //add body to world
@@ -181,24 +184,24 @@ public:
 
 	void Keyboard(unsigned char key)
 	{
-		float impulse = player->GetMass() * 10;
+		float impulse = m_player->getBody()->GetMass() * 10;
 		switch (key)
 		{
 		case 'w':
 			if (lastStep  <= 0)
 			{
-				player->ApplyLinearImpulse(b2Vec2(0, impulse), player->GetWorldCenter(), true);
+				m_player->getBody()->ApplyLinearImpulse(b2Vec2(0, impulse), m_player->getBody()->GetWorldCenter(), true);
 				lastStep = 0.75;
 			}
 			break;
 		case 'a':
-			player->ApplyLinearImpulse(b2Vec2(-impulse*0.3, 0), player->GetWorldCenter(), true);
+			m_player->getBody()->ApplyLinearImpulse(b2Vec2(-impulse*0.3, 0), m_player->getBody()->GetWorldCenter(), true);
 			break;
 		case 's':
-			player->ApplyLinearImpulse(b2Vec2(0, -impulse), player->GetWorldCenter(), true);
+			m_player->getBody()->ApplyLinearImpulse(b2Vec2(0, -impulse), m_player->getBody()->GetWorldCenter(), true);
 			break;
 		case 'd':
-			player->ApplyLinearImpulse(b2Vec2(impulse*0.3, 0), player->GetWorldCenter(), true);
+			m_player->getBody()->ApplyLinearImpulse(b2Vec2(impulse*0.3, 0), m_player->getBody()->GetWorldCenter(), true);
 			break;
 		
 		}
@@ -223,8 +226,8 @@ public:
 		m_textLine += 15;
 		m_debugDraw.DrawString(5, m_textLine, finished);
 
-		settings->viewCenter.x = player->GetPosition().x;
-		settings->viewCenter.y = player->GetPosition().y;
+		settings->viewCenter.x = m_player->getBody()->GetPosition().x;
+		settings->viewCenter.y = m_player->getBody()->GetPosition().y;
 	}
 
 	static Test* Create()
