@@ -4,25 +4,74 @@
 
 #include <string>
 #include "Player.h"
+#include "Goal.h"
+#include "Platform.h"
+#include <vector>
+#include "../Framework/Test.h"
 
 #ifndef CUSTOMCAR
 #define CUSTOMCAR
 
+
+class ContactListener : public b2ContactListener
+{
+public:
+	std::shared_ptr<Player> m_player;
+	
+	ContactListener(std::shared_ptr<Player> player)
+	{
+		m_player = player;
+	}
+
+	void BeginContact(b2Contact* contact) {
+
+		//check if fixture A was a ball
+		void* bodyUserDataA = contact->GetFixtureA()->GetBody()->GetUserData();
+		void*  bodyUserDataB = contact->GetFixtureB()->GetBody()->GetUserData();
+		if (bodyUserDataA && bodyUserDataB)
+		{
+			ENTITY_TYPE typeA = static_cast<Entity*>(bodyUserDataA)->getEntityType();
+			ENTITY_TYPE typeB = static_cast<Entity*>(bodyUserDataB)->getEntityType();
+			if (typeA == ENTITY_TYPE::GOAL && typeB == ENTITY_TYPE::PLAYER || typeB == ENTITY_TYPE::GOAL && typeA == ENTITY_TYPE::PLAYER  )
+			{
+				m_player->setReachedGoal();
+			}
+
+		}
+			
+
+
+	}
+
+
+};
+
 class CustomCar : public Test
 {
 public:
-	std::unique_ptr<Player> m_player;
+	
+	std::vector<std::shared_ptr<Platform>> m_platforms;
+	std::vector<std::shared_ptr<Entity>> m_entities;
+	std::shared_ptr<Player> m_player;
+	std::unique_ptr<Goal> m_goal;
 	b2Body* player;
+
 	float lastStep;
 	const char * finished;
 	CustomCar()
 	{
-		m_player = std::make_unique<Player>(m_world);
-
+			
+		
+		m_player = std::make_shared<Player>(m_world);
+		m_goal = std::make_unique<Goal>(m_world);
+		ContactListener myContactListenerInstance = ContactListener(m_player);
 		m_player->setPosition(b2Vec2(20, 20));
 		m_player->getBody()->SetTransform(b2Vec2(10, 20), 1);
 		m_player->getBody()->SetLinearVelocity(b2Vec2(-5, 5)); //moving up and left 5 units per second
 		m_player->getBody()->SetAngularVelocity(360 * DEGTORAD); //90 degrees per second clockwise
+
+		m_goal->setPosition(b2Vec2(22, -2));
+
 
 		b2BodyDef myBodyDef;
 		lastStep = 0;
@@ -64,10 +113,7 @@ public:
 
 
 		//CREATE BODIES
-		myBodyDef.type = b2_dynamicBody; //this will be  static bodies
-		myBodyDef.position.Set(22, -2);
-		b2Body* endgoal = m_world->CreateBody(&myBodyDef); //add body to world
-		endgoal->CreateFixture(&boxFixtureDef); //add fixture to body
+		
 		
 
 		//Boxes
@@ -91,7 +137,7 @@ public:
 
 		
 
-		myBodyDef.position.Set(25, 0);
+		myBodyDef.position.Set(27, -1);
 		b2Body* rightOfGoal = m_world->CreateBody(&myBodyDef); //add body to world
 		rightOfGoal->CreateFixture(&platformFixtureDef2); //add fixture to body
 
@@ -99,7 +145,7 @@ public:
 		
 
 		
-		//floor
+		//walls
 		myBodyDef.position.Set(0, 0); //middle, bottom
 		b2EdgeShape edgeShape;
 		
@@ -141,22 +187,29 @@ public:
 		floor->CreateFixture(&sideRight); //add a fixture to the body
 
 		//kinematics
+
+		auto platformVertical = std::make_shared<Platform>(m_world, 2, 1, b2Vec2(18, 10), b2Vec2(18, 0),2.92);
+		m_platforms.push_back(platformVertical);
+		m_entities.push_back(platformVertical);
+
+		auto platformHorizontal = std::make_shared<Platform>(m_world, 2, 1, b2Vec2(20, 5), b2Vec2(30, 5),1);
+		m_platforms.push_back(platformHorizontal);
+		m_entities.push_back(platformHorizontal);
+
+
 		myBodyDef.type = b2_kinematicBody; //this will be a kinematic body
-		myBodyDef.position.Set(-6, 8); // start from left side, slightly above the static body
-		b2Body* kinematicBody = m_world->CreateBody(&myBodyDef); //add body to world
-		kinematicBody->CreateFixture(&boxFixtureDef); //add fixture to body
-
-
-
-		kinematicBody->SetLinearVelocity(b2Vec2(1, 1)); //move right 1 unit per second
-		kinematicBody->SetAngularVelocity(360 * DEGTORAD); //1 turn per second counter-clockwise
+		myBodyDef.position.Set(-6, 8); 
+		b2Body* kinematicBody = m_world->CreateBody(&myBodyDef);
+		kinematicBody->CreateFixture(&boxFixtureDef);
+		kinematicBody->SetLinearVelocity(b2Vec2(1, 1)); 
+		kinematicBody->SetAngularVelocity(360 * DEGTORAD); 
 	
 
 		myBodyDef.position.Set(13.2, -30); 
 		b2Body* kinematicBody2 = m_world->CreateBody(&myBodyDef); //add body to world
 		kinematicBody2->CreateFixture(&platformFixtureDef); //add fixture to body
-		kinematicBody2->SetLinearVelocity(b2Vec2(0, 3)); //move right 1 unit per second
-		kinematicBody2->SetAngularVelocity(0); //1 turn per second counter-clockwise
+		kinematicBody2->SetLinearVelocity(b2Vec2(0, 3)); 
+		kinematicBody2->SetAngularVelocity(0); 
 
 
 
@@ -165,12 +218,12 @@ public:
 		b2Body* kinematicBody3 = m_world->CreateBody(&myBodyDef); //add body to world
 		kinematicBody3->CreateFixture(&platformFixtureDef); //add fixture to body
 		kinematicBody3->CreateFixture(&platformFixtureDef2); //add fixture to body
-		//kinematicBody3->SetLinearVelocity(b2Vec2(1, 1)); //move right 1 unit per second
-		kinematicBody3->SetAngularVelocity(360 * DEGTORAD); //1 turn per second counter-clockwise
+		kinematicBody3->SetAngularVelocity(360 * DEGTORAD); 
 
 
 
-		
+
+		//m_world->SetContactListener(&myContactListenerInstance);
 
 
 
@@ -216,6 +269,10 @@ public:
 		{
 			lastStep -= timeStep;
 		}
+		for (auto const& var : m_entities)
+		{
+			var->update(timeStep);
+		}
 		
 		//show some text in the main screen
 		m_debugDraw.DrawString(5, m_textLine, "Test by Sven van den Boogaart");
@@ -225,9 +282,18 @@ public:
 		m_debugDraw.DrawString(5, m_textLine, c);
 		m_textLine += 15;
 		m_debugDraw.DrawString(5, m_textLine, finished);
+		m_textLine += 15;
+		if (!m_player->getBody()->IsActive() && m_player->hasReachedGoal())
+		{
+			m_debugDraw.DrawString(5, m_textLine, "You have landed.");
+		}
 
 		settings->viewCenter.x = m_player->getBody()->GetPosition().x;
 		settings->viewCenter.y = m_player->getBody()->GetPosition().y;
+
+
+
+
 	}
 
 	static Test* Create()
@@ -235,6 +301,8 @@ public:
 		return new CustomCar;
 	}
 };
+
+
 
 
 #endif

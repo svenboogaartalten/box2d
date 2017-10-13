@@ -1,15 +1,12 @@
 #pragma once
 #include "Entity.h"
 
-class Player : public Entity {
+class Goal : public Entity {
 public:
+	bool m_playerTouchedMe = false;
 
-	bool m_goalReached = false;
-	bool hasReachedGoal() {
-		return m_goalReached;
-	}
 
-	Player(b2World* world):Entity(world)
+	Goal(b2World* world) :Entity(world)
 	{
 		b2BodyDef bodyDef;
 		bodyDef.type = b2_dynamicBody;
@@ -23,16 +20,16 @@ public:
 		m_body->SetUserData(this);
 	}
 
-	void setReachedGoal()
+	void setReached(bool status)
 	{
-		m_goalReached = true;
+		m_playerTouchedMe = true;
 	}
 
-
-	void startContact(b2Fixture* contactWith)
+	bool isReached()
 	{
-		
+		return m_playerTouchedMe;
 	}
+
 
 
 	// Inherited via Entity

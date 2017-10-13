@@ -13,6 +13,11 @@
     <ClCompile Include="C:\Users\sboogaart\Documents\Projects\Tests\box2d\Box2D_v2.3.0\Box2D\Testbed\Tests\TestEntries.cpp">
       <Filter>Tests</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Testbed\Tests\Player.cpp" />
+    <ClCompile Include="..\..\Testbed\Tests\Goal.cpp" />
+    <ClCompile Include="..\..\Testbed\Tests\Platform.cpp">
+      <Filter>Tests\customclasses</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Users\sboogaart\Documents\Projects\Tests\box2d\Box2D_v2.3.0\Box2D\Testbed\Framework\Render.h">
@@ -159,6 +164,16 @@
     <ClInclude Include="..\..\Testbed\Tests\Player.h">
       <Filter>Tests\customclasses</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Testbed\Tests\Entity.h">
+      <Filter>Tests\customclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="..\..\Testbed\Tests\Goal.h">
+      <Filter>Tests\customclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Testbed\Tests\Platform.h">
+      <Filter>Tests\customclasses</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\sboogaart\Documents\Projects\Tests\box2d\Box2D_v2.3.0\Box2D\Testbed\CMakeLists.txt" />
@@ -173,5 +188,8 @@
     <Filter Include="Tests\customclasses">
       <UniqueIdentifier>{519ca48d-fbe4-40a3-8af5-e89e5d4311a9}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Testbed.rc" />
   </ItemGroup>
 </Project>

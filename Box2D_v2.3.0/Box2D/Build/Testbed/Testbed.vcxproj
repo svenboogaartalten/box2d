@@ -309,9 +309,15 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Testbed\Tests\Goal.cpp" />
+    <ClCompile Include="..\..\Testbed\Tests\Platform.cpp" />
+    <ClCompile Include="..\..\Testbed\Tests\Player.cpp" />
     <ClCompile Include="C:\Users\sboogaart\Documents\Projects\Tests\box2d\Box2D_v2.3.0\Box2D\Testbed\Framework\Main.cpp" />
     <ClCompile Include="C:\Users\sboogaart\Documents\Projects\Tests\box2d\Box2D_v2.3.0\Box2D\Testbed\Framework\Render.cpp" />
     <ClInclude Include="..\..\Testbed\Tests\CustomCar.h" />
+    <ClInclude Include="..\..\Testbed\Tests\Entity.h" />
+    <ClInclude Include="..\..\Testbed\Tests\Goal.h" />
+    <ClInclude Include="..\..\Testbed\Tests\Platform.h" />
     <ClInclude Include="..\..\Testbed\Tests\Player.h" />
     <ClInclude Include="C:\Users\sboogaart\Documents\Projects\Tests\box2d\Box2D_v2.3.0\Box2D\Testbed\Framework\Render.h" />
     <ClCompile Include="C:\Users\sboogaart\Documents\Projects\Tests\box2d\Box2D_v2.3.0\Box2D\Testbed\Framework\Test.cpp" />
@@ -361,6 +367,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\Users\sboogaart\Documents\Projects\Tests\box2d\Box2D_v2.3.0\Box2D\Testbed\Tests\VaryingRestitution.h" />
     <ClInclude Include="C:\Users\sboogaart\Documents\Projects\Tests\box2d\Box2D_v2.3.0\Box2D\Testbed\Tests\VerticalStack.h" />
     <ClInclude Include="C:\Users\sboogaart\Documents\Projects\Tests\box2d\Box2D_v2.3.0\Box2D\Testbed\Tests\Web.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\Users\sboogaart\Documents\Projects\Tests\box2d\Box2D_v2.3.0\Box2D\Build\ZERO_CHECK.vcxproj">
@@ -379,6 +386,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{86D745EB-B517-3C39-971F-6976B98F539D}</Project>
       <Name>glui</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Testbed.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
