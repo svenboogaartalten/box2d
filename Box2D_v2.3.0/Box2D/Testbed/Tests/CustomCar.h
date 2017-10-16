@@ -12,39 +12,7 @@
 #ifndef CUSTOMCAR
 #define CUSTOMCAR
 
-
-class ContactListener : public b2ContactListener
-{
-public:
-	std::shared_ptr<Player> m_player;
-	
-	ContactListener(std::shared_ptr<Player> player)
-	{
-		m_player = player;
-	}
-
-	void BeginContact(b2Contact* contact) {
-
-		//check if fixture A was a ball
-		void* bodyUserDataA = contact->GetFixtureA()->GetBody()->GetUserData();
-		void*  bodyUserDataB = contact->GetFixtureB()->GetBody()->GetUserData();
-		if (bodyUserDataA && bodyUserDataB)
-		{
-			ENTITY_TYPE typeA = static_cast<Entity*>(bodyUserDataA)->getEntityType();
-			ENTITY_TYPE typeB = static_cast<Entity*>(bodyUserDataB)->getEntityType();
-			if (typeA == ENTITY_TYPE::GOAL && typeB == ENTITY_TYPE::PLAYER || typeB == ENTITY_TYPE::GOAL && typeA == ENTITY_TYPE::PLAYER  )
-			{
-				m_player->setReachedGoal();
-			}
-
-		}
-			
-
-
-	}
-
-
-};
+#include "MyContactListener.h"
 
 class CustomCar : public Test
 {
@@ -55,16 +23,20 @@ public:
 	std::shared_ptr<Player> m_player;
 	std::unique_ptr<Goal> m_goal;
 	b2Body* player;
-
+	bool isFinished = false;
 	float lastStep;
 	const char * finished;
-	CustomCar()
+	MyContactListener myContactListenerInstance;
+
+
+	CustomCar()	
 	{
-			
+		
+
 		
 		m_player = std::make_shared<Player>(m_world);
+		myContactListenerInstance.setPlayer(m_player);
 		m_goal = std::make_unique<Goal>(m_world);
-		ContactListener myContactListenerInstance = ContactListener(m_player);
 		m_player->setPosition(b2Vec2(20, 20));
 		m_player->getBody()->SetTransform(b2Vec2(10, 20), 1);
 		m_player->getBody()->SetLinearVelocity(b2Vec2(-5, 5)); //moving up and left 5 units per second
@@ -75,7 +47,7 @@ public:
 
 		b2BodyDef myBodyDef;
 		lastStep = 0;
-		finished = "Go get the orange box on your right side to finish the game";
+		finished = "Go get the orange box on your right side to finish the quest.";
 
 		//SHAPES
 		b2PolygonShape boxShape;
@@ -223,7 +195,7 @@ public:
 
 
 
-		//m_world->SetContactListener(&myContactListenerInstance);
+		m_world->SetContactListener(&myContactListenerInstance);
 
 
 
@@ -283,9 +255,10 @@ public:
 		m_textLine += 15;
 		m_debugDraw.DrawString(5, m_textLine, finished);
 		m_textLine += 15;
-		if (!m_player->getBody()->IsActive() && m_player->hasReachedGoal())
+		if (!isFinished && m_player->hasReachedGoal())
 		{
-			m_debugDraw.DrawString(5, m_textLine, "You have landed.");
+			finished = "You completed the quest.";
+			isFinished = true;
 		}
 
 		settings->viewCenter.x = m_player->getBody()->GetPosition().x;

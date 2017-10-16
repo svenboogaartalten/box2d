@@ -171,7 +171,7 @@ public:
 protected:
 	friend class DestructionListener;
 	friend class BoundaryListener;
-	friend class ContactListener;
+	friend class MyContactListener;
 
 	b2Body* m_groundBody;
 	b2AABB m_worldAABB;

@@ -310,6 +310,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Testbed\Tests\Goal.cpp" />
+    <ClCompile Include="..\..\Testbed\Tests\MyContactListener.cpp" />
     <ClCompile Include="..\..\Testbed\Tests\Platform.cpp" />
     <ClCompile Include="..\..\Testbed\Tests\Player.cpp" />
     <ClCompile Include="C:\Users\sboogaart\Documents\Projects\Tests\box2d\Box2D_v2.3.0\Box2D\Testbed\Framework\Main.cpp" />
@@ -317,6 +318,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="..\..\Testbed\Tests\CustomCar.h" />
     <ClInclude Include="..\..\Testbed\Tests\Entity.h" />
     <ClInclude Include="..\..\Testbed\Tests\Goal.h" />
+    <ClInclude Include="..\..\Testbed\Tests\MyContactListener.h" />
     <ClInclude Include="..\..\Testbed\Tests\Platform.h" />
     <ClInclude Include="..\..\Testbed\Tests\Player.h" />
     <ClInclude Include="C:\Users\sboogaart\Documents\Projects\Tests\box2d\Box2D_v2.3.0\Box2D\Testbed\Framework\Render.h" />

@@ -18,6 +18,9 @@
     <ClCompile Include="..\..\Testbed\Tests\Platform.cpp">
       <Filter>Tests\customclasses</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Testbed\Tests\MyContactListener.cpp">
+      <Filter>Tests\customclasses</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Users\sboogaart\Documents\Projects\Tests\box2d\Box2D_v2.3.0\Box2D\Testbed\Framework\Render.h">
@@ -172,6 +175,9 @@
       <Filter>Tests\customclasses</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Testbed\Tests\Platform.h">
+      <Filter>Tests\customclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Testbed\Tests\MyContactListener.h">
       <Filter>Tests\customclasses</Filter>
     </ClInclude>
   </ItemGroup>
