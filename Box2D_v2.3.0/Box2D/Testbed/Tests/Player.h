@@ -18,7 +18,13 @@ public:
 		b2PolygonShape polygonShape;
 		polygonShape.SetAsBox(1, 1);
 
-		m_body->CreateFixture(&polygonShape, 1);//shape, density
+		b2FixtureDef myFixtureDef;
+		myFixtureDef.shape = &polygonShape;		
+		myFixtureDef.filter.categoryBits = ENTITY_TYPE::PLAYER;
+		myFixtureDef.shape = &polygonShape;
+		myFixtureDef.density = 1;
+
+		m_body->CreateFixture(&myFixtureDef);//shape, density
 
 		m_body->SetUserData(this);
 	}

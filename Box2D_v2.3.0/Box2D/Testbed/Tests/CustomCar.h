@@ -29,16 +29,15 @@ public:
 	MyContactListener myContactListenerInstance;
 
 
-	CustomCar()	
+	CustomCar():
+		m_player(std::make_shared<Player>(m_world)),
+		m_goal(std::make_unique<Goal>(m_world))
 	{
-		
 
-		
-		m_player = std::make_shared<Player>(m_world);
+
 		myContactListenerInstance.setPlayer(m_player);
-		m_goal = std::make_unique<Goal>(m_world);
-		m_player->setPosition(b2Vec2(20, 20));
-		m_player->getBody()->SetTransform(b2Vec2(10, 20), 1);
+		m_player->setPosition(b2Vec2(-5, -5));
+		m_player->getBody()->SetTransform(b2Vec2(-20, 5), 1);
 		m_player->getBody()->SetLinearVelocity(b2Vec2(-5, 5)); //moving up and left 5 units per second
 		m_player->getBody()->SetAngularVelocity(360 * DEGTORAD); //90 degrees per second clockwise
 
@@ -91,15 +90,28 @@ public:
 		//Boxes
 		myBodyDef.type = b2_staticBody; //this will be  static bodies
 
-		myBodyDef.position.Set(0, 10); 
+
+		myBodyDef.position.Set(-24, -7);
+		b2Body* staticBody6 = m_world->CreateBody(&myBodyDef); //add body to world
+		staticBody6->CreateFixture(&boxFixtureDef); //add fixture to body
+
+		myBodyDef.position.Set(-19, -5);
 		b2Body* staticBody = m_world->CreateBody(&myBodyDef); //add body to world
 		staticBody->CreateFixture(&boxFixtureDef); //add fixture to body
+
+		myBodyDef.position.Set(-16, -3);
+		b2Body* staticBody4 = m_world->CreateBody(&myBodyDef); //add body to world
+		staticBody4->CreateFixture(&boxFixtureDef); //add fixture to body
+
+		myBodyDef.position.Set(0, 0); 
+		b2Body* staticBody5 = m_world->CreateBody(&myBodyDef); //add body to world
+		staticBody5->CreateFixture(&boxFixtureDef); //add fixture to body
 
 		myBodyDef.position.Set(5,5); 
 		b2Body* staticBody2 = m_world->CreateBody(&myBodyDef); //add body to world
 		staticBody2->CreateFixture(&boxFixtureDef); //add fixture to body
 
-		myBodyDef.position.Set(10, 0);	
+		myBodyDef.position.Set(10, 10);	
 		b2Body* staticBody3 = m_world->CreateBody(&myBodyDef); //add body to world
 		staticBody3->CreateFixture(&boxFixtureDef); //add fixture to body
 
@@ -132,7 +144,7 @@ public:
 		floor->CreateFixture(&myFixtureDef); //add a fixture to the body
 		myFixtureDef.friction = 1;
 		
-		edgeShape.Set(b2Vec2(12, 15), b2Vec2(12, -4));
+		edgeShape.Set(b2Vec2(12, 18), b2Vec2(12, -4));
 		b2FixtureDef myFixtureDef2; 
 		myFixtureDef2.shape = &edgeShape;
 		floor->CreateFixture(&myFixtureDef2); //add a fixture to the body
@@ -168,16 +180,20 @@ public:
 		m_platforms.push_back(platformHorizontal);
 		m_entities.push_back(platformHorizontal);
 
+		auto platformOverLine = std::make_shared<Platform>(m_world, 2, 1, b2Vec2(10, 16), b2Vec2(10, -2), 4);
+		m_platforms.push_back(platformOverLine);
+		m_entities.push_back(platformOverLine);
+
 
 		myBodyDef.type = b2_kinematicBody; //this will be a kinematic body
-		myBodyDef.position.Set(-6, 8); 
-		b2Body* kinematicBody = m_world->CreateBody(&myBodyDef);
-		kinematicBody->CreateFixture(&boxFixtureDef);
-		kinematicBody->SetLinearVelocity(b2Vec2(1, 1)); 
-		kinematicBody->SetAngularVelocity(360 * DEGTORAD); 
+		myBodyDef.position.Set(3, 14);
+		b2Body* spinnerLeft = m_world->CreateBody(&myBodyDef); //add body to world
+		spinnerLeft->CreateFixture(&platformFixtureDef); //add fixture to body
+		spinnerLeft->CreateFixture(&platformFixtureDef2); //add fixture to body
+		spinnerLeft->SetAngularVelocity(-360 * DEGTORAD);
 	
 
-		myBodyDef.position.Set(13.2, -30); 
+		myBodyDef.position.Set(10, -30); 
 		b2Body* kinematicBody2 = m_world->CreateBody(&myBodyDef); //add body to world
 		kinematicBody2->CreateFixture(&platformFixtureDef); //add fixture to body
 		kinematicBody2->SetLinearVelocity(b2Vec2(0, 3)); 
@@ -186,7 +202,7 @@ public:
 
 
 
-		myBodyDef.position.Set(20, 30); 
+		myBodyDef.position.Set(20, 20); 
 		b2Body* kinematicBody3 = m_world->CreateBody(&myBodyDef); //add body to world
 		kinematicBody3->CreateFixture(&platformFixtureDef); //add fixture to body
 		kinematicBody3->CreateFixture(&platformFixtureDef2); //add fixture to body

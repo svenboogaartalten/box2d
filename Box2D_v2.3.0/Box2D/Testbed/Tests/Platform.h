@@ -9,12 +9,13 @@ public:
 	bool goToTo = true;
 	float m_speedMultiplier;
 
-	Platform(b2World* world, double width, double height, b2Vec2 from, b2Vec2 to, float speedMultiplier = 5) :Entity(world)
-	{
-		m_speedMultiplier = speedMultiplier;
-		m_from = from;
-		m_to = to;
-		m_destination = to;
+	Platform(b2World* world, double width, double height, b2Vec2 from, b2Vec2 to, float speedMultiplier = 5) 
+		:m_from(from),
+		m_to(to),
+		m_destination(to),
+		m_speedMultiplier(speedMultiplier), 
+		Entity(world)
+	{		
 
 		b2BodyDef myBodyDef;
 
