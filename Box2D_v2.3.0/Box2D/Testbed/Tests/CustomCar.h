@@ -37,8 +37,8 @@ public:
 
 		myContactListenerInstance.setPlayer(m_player);
 		m_player->setPosition(b2Vec2(-5, -5));
-		m_player->getBody()->SetTransform(b2Vec2(-20, 5), 1);
-		m_player->getBody()->SetLinearVelocity(b2Vec2(-5, 5)); //moving up and left 5 units per second
+		m_player->getBody()->SetTransform(b2Vec2(-42, 5), 1);
+		m_player->getBody()->SetLinearVelocity(b2Vec2(5, 5)); //moving up and left 5 units per second
 		m_player->getBody()->SetAngularVelocity(360 * DEGTORAD); //90 degrees per second clockwise
 
 		m_goal->setPosition(b2Vec2(22, -2));
@@ -88,6 +88,25 @@ public:
 		
 
 		//Boxes
+
+		myBodyDef.type = b2_dynamicBody; //this will be  static bodies
+		myBodyDef.position.Set(-31, -9);
+		b2Body* moveableBox = m_world->CreateBody(&myBodyDef); //add body to world
+		moveableBox->CreateFixture(&boxFixtureDef); //add fixture to body
+
+		myBodyDef.position.Set(-31, -7);
+		b2Body* moveableBox2 = m_world->CreateBody(&myBodyDef); //add body to world
+		moveableBox2->CreateFixture(&boxFixtureDef); //add fixture to body
+
+		myBodyDef.position.Set(-31, -5);
+		b2Body* moveableBo3 = m_world->CreateBody(&myBodyDef); //add body to world
+		moveableBo3->CreateFixture(&boxFixtureDef); //add fixture to body
+
+		myBodyDef.position.Set(-31, -3);
+		b2Body* moveableBo4 = m_world->CreateBody(&myBodyDef); //add body to world
+		moveableBo4->CreateFixture(&boxFixtureDef); //add fixture to body
+
+
 		myBodyDef.type = b2_staticBody; //this will be  static bodies
 
 
@@ -190,7 +209,7 @@ public:
 		b2Body* spinnerLeft = m_world->CreateBody(&myBodyDef); //add body to world
 		spinnerLeft->CreateFixture(&platformFixtureDef); //add fixture to body
 		spinnerLeft->CreateFixture(&platformFixtureDef2); //add fixture to body
-		spinnerLeft->SetAngularVelocity(-360 * DEGTORAD);
+		spinnerLeft->SetAngularVelocity(360 * DEGTORAD);
 	
 
 		myBodyDef.position.Set(10, -30); 
