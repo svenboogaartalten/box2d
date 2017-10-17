@@ -72,6 +72,9 @@
     <ClInclude Include="PreprocessorTest.h">
       <Filter>Tests</Filter>
     </ClInclude>
+    <ClInclude Include="RockPaperScissor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -112,6 +115,9 @@
     </ClCompile>
     <ClCompile Include="PreprocessorTest.cpp">
       <Filter>Tests\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="RockPaperScissor.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
