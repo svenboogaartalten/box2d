@@ -85,26 +85,17 @@ public:
 
 		//CREATE BODIES
 		
-		
+		myBodyDef.type = b2_dynamicBody; //this will be  static bodies
 
 		//Boxes
-
-		myBodyDef.type = b2_dynamicBody; //this will be  static bodies
-		myBodyDef.position.Set(-31, -9);
-		b2Body* moveableBox = m_world->CreateBody(&myBodyDef); //add body to world
-		moveableBox->CreateFixture(&boxFixtureDef); //add fixture to body
-
-		myBodyDef.position.Set(-31, -7);
-		b2Body* moveableBox2 = m_world->CreateBody(&myBodyDef); //add body to world
-		moveableBox2->CreateFixture(&boxFixtureDef); //add fixture to body
-
-		myBodyDef.position.Set(-31, -5);
-		b2Body* moveableBo3 = m_world->CreateBody(&myBodyDef); //add body to world
-		moveableBo3->CreateFixture(&boxFixtureDef); //add fixture to body
-
-		myBodyDef.position.Set(-31, -3);
-		b2Body* moveableBo4 = m_world->CreateBody(&myBodyDef); //add body to world
-		moveableBo4->CreateFixture(&boxFixtureDef); //add fixture to body
+		for (int i = 0; i < 6; i++)
+		{
+			myBodyDef.position.Set(-31, -9 + i *2);
+			b2Body* box = m_world->CreateBody(&myBodyDef); //add body to world
+			box->CreateFixture(&boxFixtureDef); //add fixture to body
+		}
+		
+		
 
 
 		myBodyDef.type = b2_staticBody; //this will be  static bodies

@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Inheritance">
+      <UniqueIdentifier>{a978bf09-3bbc-4d7e-a002-c497031a1937}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Inheritance\cpp">
+      <UniqueIdentifier>{845c90b2-9bcc-4481-b45a-5dafa8c3d7bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{e93e7421-81fd-406b-b127-01fdceeab286}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OperatorOverloading">
+      <UniqueIdentifier>{7cd0cffa-a1e8-417a-8133-1dc88ab107d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OperatorOverloading\cpp">
+      <UniqueIdentifier>{53e9d645-9c9c-4d19-a860-2e779e84d7c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests\cpp">
+      <UniqueIdentifier>{ccf25b12-fb80-4106-a09d-f7eb2b00a3aa}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InheritancePublic.h">
+      <Filter>Inheritance</Filter>
+    </ClInclude>
+    <ClInclude Include="InheritanceBase.h">
+      <Filter>Inheritance</Filter>
+    </ClInclude>
+    <ClInclude Include="InheritancePrivate.h">
+      <Filter>Inheritance</Filter>
+    </ClInclude>
+    <ClInclude Include="InheritanceProtected.h">
+      <Filter>Inheritance</Filter>
+    </ClInclude>
+    <ClInclude Include="AnotherBase.h">
+      <Filter>Inheritance</Filter>
+    </ClInclude>
+    <ClInclude Include="InheritanceTest.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="MultipleInheritance.h">
+      <Filter>Inheritance</Filter>
+    </ClInclude>
+    <ClInclude Include="TestBase.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="OperatorOverloaded.h">
+      <Filter>OperatorOverloading</Filter>
+    </ClInclude>
+    <ClInclude Include="OperatorOverloadingTest.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="PreprocessorTest.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Syntax.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InheritanceBase.cpp">
+      <Filter>Inheritance\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="InheritancePrivate.cpp">
+      <Filter>Inheritance\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="InheritanceProtected.cpp">
+      <Filter>Inheritance\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="InheritancePublic.cpp">
+      <Filter>Inheritance\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="AnotherBase.cpp">
+      <Filter>Inheritance\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="MultipleInheritance.cpp">
+      <Filter>Inheritance\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="OperatorOverloaded.cpp">
+      <Filter>OperatorOverloading\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="InheritanceTest.cpp">
+      <Filter>Tests\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="TestBase.cpp">
+      <Filter>Tests\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="OperatorOverloadingTest.cpp">
+      <Filter>Tests\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="PreprocessorTest.cpp">
+      <Filter>Tests\cpp</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
