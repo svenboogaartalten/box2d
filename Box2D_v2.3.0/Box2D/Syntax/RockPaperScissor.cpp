@@ -80,7 +80,7 @@ void RockPaperScissor::Tie()
 	std::cout << "its a tie" << std::endl;
 }
 
-std::string RockPaperScissor::stringValue(CHOISE choise)
+std::string RockPaperScissor::stringValue(CHOISE& choise)
 {
 	switch (choise) {
 	case(SCISSOR):

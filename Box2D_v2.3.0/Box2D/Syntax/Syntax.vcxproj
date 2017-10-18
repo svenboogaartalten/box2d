@@ -89,6 +89,8 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Program Files\cpp_libs\boost_1_65_1;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -144,6 +146,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AnotherBase.h" />
+    <ClInclude Include="AsyncTest.h" />
+    <ClInclude Include="BoostTest.h" />
     <ClInclude Include="InheritanceBase.h" />
     <ClInclude Include="InheritancePrivate.h" />
     <ClInclude Include="InheritanceProtected.h" />
@@ -160,6 +164,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AnotherBase.cpp" />
+    <ClCompile Include="AsyncTest.cpp" />
+    <ClCompile Include="BoostTest.cpp" />
     <ClCompile Include="InheritanceBase.cpp" />
     <ClCompile Include="InheritancePrivate.cpp" />
     <ClCompile Include="InheritanceProtected.cpp" />

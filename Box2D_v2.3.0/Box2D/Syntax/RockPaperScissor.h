@@ -14,7 +14,7 @@ public:
 	void Won();
 	void Lose();
 	void Tie();
-	std::string stringValue(CHOISE);
+	std::string stringValue(CHOISE&);
 	RockPaperScissor();
 	~RockPaperScissor();
 };

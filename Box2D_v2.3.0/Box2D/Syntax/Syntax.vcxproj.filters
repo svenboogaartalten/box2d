@@ -72,7 +72,13 @@
     <ClInclude Include="PreprocessorTest.h">
       <Filter>Tests</Filter>
     </ClInclude>
+    <ClInclude Include="BoostTest.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
     <ClInclude Include="RockPaperScissor.h">
+      <Filter>Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="AsyncTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -116,7 +122,13 @@
     <ClCompile Include="PreprocessorTest.cpp">
       <Filter>Tests\cpp</Filter>
     </ClCompile>
+    <ClCompile Include="BoostTest.cpp">
+      <Filter>Tests\cpp</Filter>
+    </ClCompile>
     <ClCompile Include="RockPaperScissor.cpp">
+      <Filter>Tests\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="AsyncTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
