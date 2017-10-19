@@ -9,6 +9,9 @@
 #include <vector>
 #include "../Framework/Test.h"
 
+#include <windows.h>
+#include <mmsystem.h>
+
 #ifndef CUSTOMCAR
 #define CUSTOMCAR
 
@@ -90,7 +93,7 @@ public:
 		//Boxes
 		for (int i = 0; i < 6; i++)
 		{
-			myBodyDef.position.Set(-31, -9 + i *2);
+			myBodyDef.position.Set(-40 + i *0.5, -9 + i *2);
 			b2Body* box = m_world->CreateBody(&myBodyDef); //add body to world
 			box->CreateFixture(&boxFixtureDef); //add fixture to body
 		}
@@ -194,6 +197,19 @@ public:
 		m_platforms.push_back(platformOverLine);
 		m_entities.push_back(platformOverLine);
 
+		auto p1 = std::make_shared<Platform>(m_world, 2, 1, b2Vec2(-12, 3), b2Vec2(-2, 3), 4, true);
+		m_platforms.push_back(p1);
+		m_entities.push_back(p1);
+
+		auto p2 = std::make_shared<Platform>(m_world, 2, 1, b2Vec2(-8, 5), b2Vec2(4, 5), 4);
+		m_platforms.push_back(p2);
+		m_entities.push_back(p2);
+
+
+		auto p3 = std::make_shared<Platform>(m_world, 2, 1, b2Vec2(-10, 1), b2Vec2(0, 1), 4);
+		m_platforms.push_back(p3);
+		m_entities.push_back(p3);
+
 
 		myBodyDef.type = b2_kinematicBody; //this will be a kinematic body
 		myBodyDef.position.Set(3, 14);
@@ -239,8 +255,10 @@ public:
 		switch (key)
 		{
 		case 'w':
+			
 			if (lastStep  <= 0)
 			{
+				PlaySound(TEXT("C:\Users\sboogaart\Documents\Projects\Tests\box2d\Box2D_v2.3.0\Box2D\Build\Testbed\Debug\win.mp3"), NULL, SND_FILENAME);
 				m_player->getBody()->ApplyLinearImpulse(b2Vec2(0, impulse), m_player->getBody()->GetWorldCenter(), true);
 				lastStep = 0.75;
 			}

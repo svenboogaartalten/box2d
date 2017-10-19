@@ -9,7 +9,7 @@ public:
 	bool goToTo = true;
 	float m_speedMultiplier;
 
-	Platform(b2World* world, double width, double height, b2Vec2 from, b2Vec2 to, float speedMultiplier = 5) 
+	Platform(b2World* world, double width, double height, b2Vec2 from, b2Vec2 to, float speedMultiplier = 5, bool reverse = false) 
 		:m_from(from),
 		m_to(to),
 		m_destination(to),
@@ -20,7 +20,15 @@ public:
 		b2BodyDef myBodyDef;
 
 		myBodyDef.type = b2_kinematicBody; //this will be a kinematic body
-		myBodyDef.position.Set(from.x, from.y);
+		if (reverse == true)
+		{
+			myBodyDef.position.Set(to.x, to.y);
+			m_destination = from;
+		}
+		else
+		{
+			myBodyDef.position.Set(from.x, from.y);
+		}
 
 		b2PolygonShape boxShape;
 		boxShape.SetAsBox(width, height);

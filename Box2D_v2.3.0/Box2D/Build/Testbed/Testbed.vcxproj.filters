@@ -161,9 +161,6 @@
     <ClInclude Include="C:\Users\sboogaart\Documents\Projects\Tests\box2d\Box2D_v2.3.0\Box2D\Testbed\Tests\Web.h">
       <Filter>Tests</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Testbed\Tests\CustomCar.h">
-      <Filter>Tests</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Testbed\Tests\Player.h">
       <Filter>Tests\customclasses</Filter>
     </ClInclude>
@@ -178,6 +175,9 @@
       <Filter>Tests\customclasses</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Testbed\Tests\MyContactListener.h">
+      <Filter>Tests\customclasses</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Testbed\Tests\CustomCar.h">
       <Filter>Tests\customclasses</Filter>
     </ClInclude>
   </ItemGroup>
