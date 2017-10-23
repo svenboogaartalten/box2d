@@ -9,8 +9,6 @@
 #include <vector>
 #include "../Framework/Test.h"
 
-#include <windows.h>
-#include <mmsystem.h>
 
 #ifndef CUSTOMCAR
 #define CUSTOMCAR
@@ -44,7 +42,7 @@ public:
 		m_player->getBody()->SetLinearVelocity(b2Vec2(5, 5)); //moving up and left 5 units per second
 		m_player->getBody()->SetAngularVelocity(360 * DEGTORAD); //90 degrees per second clockwise
 
-		m_goal->setPosition(b2Vec2(22, -2));
+		m_goal->setPosition(b2Vec2(-46, 38));
 
 
 		b2BodyDef myBodyDef;
@@ -99,8 +97,7 @@ public:
 		}
 		
 		
-
-
+		//static boxes
 		myBodyDef.type = b2_staticBody; //this will be  static bodies
 
 
@@ -149,13 +146,39 @@ public:
 
 		
 		
-		edgeShape.Set(b2Vec2(-15, 0), b2Vec2(30, -4));
+		edgeShape.Set(b2Vec2(-15, 0), b2Vec2(40, -4));
 		b2Body* floor = m_world->CreateBody(&myBodyDef);
 		b2FixtureDef myFixtureDef;
 		myFixtureDef.friction = 0;
 		myFixtureDef.shape = &edgeShape;
 		floor->CreateFixture(&myFixtureDef); //add a fixture to the body
 		myFixtureDef.friction = 1;
+
+
+
+		edgeShape.Set(b2Vec2(45, 0), b2Vec2(60, -8));
+		b2FixtureDef myFixtureDefslide;
+		myFixtureDefslide.shape = &edgeShape;
+		floor->CreateFixture(&myFixtureDefslide); //add a fixture to the body
+
+
+		edgeShape.Set(b2Vec2(60, -8), b2Vec2(60, -10));
+		b2FixtureDef slideBottom;
+		slideBottom.shape = &edgeShape;
+		floor->CreateFixture(&slideBottom); //add a fixture to the body
+
+		edgeShape.Set(b2Vec2(64, -3), b2Vec2(80,6));
+		b2FixtureDef slideJumpb;
+		slideJumpb.shape = &edgeShape;
+		floor->CreateFixture(&slideJumpb); //add a fixture to the body
+		
+
+		edgeShape.Set(b2Vec2(80, 6), b2Vec2(145,-40));
+		b2FixtureDef bigjump;
+		bigjump.shape = &edgeShape;
+		floor->CreateFixture(&bigjump); //add a fixture to the body
+
+
 		
 		edgeShape.Set(b2Vec2(12, 18), b2Vec2(12, -4));
 		b2FixtureDef myFixtureDef2; 
@@ -163,12 +186,12 @@ public:
 		floor->CreateFixture(&myFixtureDef2); //add a fixture to the body
 		
 		
-		edgeShape.Set(b2Vec2(-50, -10), b2Vec2(50, -10));
+		edgeShape.Set(b2Vec2(-50, -10), b2Vec2(150, -10));
 		b2FixtureDef absoluteFloor;
 		absoluteFloor.shape = &edgeShape;
 		floor->CreateFixture(&absoluteFloor); //add a fixture to the body
 
-		edgeShape.Set(b2Vec2(-50, 40), b2Vec2(50, 40));
+		edgeShape.Set(b2Vec2(-50, 40), b2Vec2(150, 40));
 		b2FixtureDef roofFixture;
 		roofFixture.shape = &edgeShape;
 		floor->CreateFixture(&roofFixture); //add a fixture to the body
@@ -178,7 +201,12 @@ public:
 		sideLeft.shape = &edgeShape;
 		floor->CreateFixture(&sideLeft); //add a fixture to the body
 
-		edgeShape.Set(b2Vec2(50, 40), b2Vec2(50, -40));
+		edgeShape.Set(b2Vec2(-50, 33), b2Vec2(-44, 33));
+		b2FixtureDef goalPlatform;
+		goalPlatform.shape = &edgeShape;
+		floor->CreateFixture(&goalPlatform); //add a fixture to the body
+
+		edgeShape.Set(b2Vec2(150, 40), b2Vec2(150, -40));
 		b2FixtureDef sideRight;
 		sideRight.shape = &edgeShape;
 		floor->CreateFixture(&sideRight); //add a fixture to the body
@@ -258,9 +286,9 @@ public:
 			
 			if (lastStep  <= 0)
 			{
-				PlaySound(TEXT("C:\Users\sboogaart\Documents\Projects\Tests\box2d\Box2D_v2.3.0\Box2D\Build\Testbed\Debug\win.mp3"), NULL, SND_FILENAME);
+
 				m_player->getBody()->ApplyLinearImpulse(b2Vec2(0, impulse), m_player->getBody()->GetWorldCenter(), true);
-				lastStep = 0.75;
+				lastStep = 1.2;
 			}
 			break;
 		case 'a':
